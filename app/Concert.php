@@ -10,4 +10,9 @@ class Concert extends Model
     protected $dates = [
         'date'
     ];
+
+    public function getFormattedDateAttribute()
+    {
+        return $this->date->format('F j, Y');
+    }
 }
