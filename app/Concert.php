@@ -11,6 +11,11 @@ class Concert extends Model
         'date'
     ];
 
+    public function scopePublished($query)
+    {
+        return $query->whereNotNull('published_at');
+    }
+
     public function getFormattedDateAttribute()
     {
         return $this->date->format('F j, Y');
