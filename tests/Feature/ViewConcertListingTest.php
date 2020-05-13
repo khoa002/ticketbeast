@@ -2,11 +2,15 @@
 
 namespace Tests\Feature;
 
+use App\Concert;
 use Carbon\Carbon;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
 class ViewConcertListingTest extends TestCase
 {
+    use  DatabaseMigrations;
+
     /** @test */
     public function userCanViewAConcertListing()
     {
@@ -22,7 +26,7 @@ class ViewConcertListingTest extends TestCase
             'venue_city'             => 'Phoenix',
             'venue_state'            => 'AZ',
             'venue_zip'              => '85210',
-            'additional_information' => '',
+            'additional_information' => 'For tickets, call (555) 555-5555.',
         ]);
 
         // ACT
@@ -35,7 +39,7 @@ class ViewConcertListingTest extends TestCase
         $this->see('with Animosity and Lethargy');
         $this->see('December 14, 2020');
         $this->see('8:00pm');
-        $this->see('35.50');
+        $this->see('32.50');
         $this->see('The Mosh Pit');
         $this->see('123 Example Lane');
         $this->see('Phoenix, AZ 85210');
